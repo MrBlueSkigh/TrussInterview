@@ -11,18 +11,49 @@ def index(request):
     r = requests.get(url).json()['results']
     planet_list = []
     for result in r:
+        if result['name'] != 'unknown':
+            p_name = result['name']
+        else:
+            p_name = '?'
+
+        if result['climate'] != 'unknown':
+            p_climate = result['climate']
+        else:
+            p_climate = '?'
+
+        if result['residents']:
+            p_residents = len(result['residents'])
+        else:
+            p_residents = 0
+
+        if result['climate'] != 'unknown':
+            p_climate = result['climate']
+        else:
+            p_climate = '?'
+
+        if result['terrain'] != 'unknown':
+            p_terrain = result['terrain']
+        else:
+            p_terrain = '?'
+
+        if result['population'] != 'unknown':
+            p_population = result['population']
+        else:
+            p_population = '?'
+
+        if result['surface_water'] != 'unknown' and result['diameter'] != 'unknown':
+            p_surface_water = round((int(result['surface_water'])/100) * int(result['diameter']))
+        else:
+            p_surface_water = '?'
+
         planet_list.append(
                 Planet(
-                        name=result['name'], 
-                        diameter=result['diameter'], 
-                        gravity=result['gravity'], 
-                        climate=result['climate'], 
-                        orbital_period=result['orbital_period'], 
-                        population=result['population'], 
-                        residents=result['residents'],
-                        rotation_period=result['rotation_period'], 
-                        surface_water=result['surface_water'], 
-                        terrain=result['terrain'], 
+                        name=p_name, 
+                        climate=p_climate, 
+                        population=p_population, 
+                        residents=p_residents,
+                        surface_water=p_surface_water, 
+                        terrain=p_terrain, 
                         url=result['url']
                     )
             )

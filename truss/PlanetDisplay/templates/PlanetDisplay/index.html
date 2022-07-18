@@ -14,33 +14,21 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Climate</th>
-            <th scope="col">Diameter</th>
-            <th scope="col">Gravity</th>
-            <th scope="col">Orbital Period</th>
             <th scope="col">Population</th>
             <th scope="col">Residents</th>
-            <th scope="col">Rotation Period</th>
-            <th scope="col">Surface Water %</th>
+            <th scope="col">Surface Water km2</th>
             <th scope="col">Terrain</th>
         </tr>
     </thead>
-    <tbody>d
+    <tbody>
         {% for planet in planets%}
         <tr>
             <th scope="row">
                 <a href={{ planet.url }} target="_blank">{{ planet.name }}</a>
             </th>
             <td>{{ planet.climate }}</td>
-            <td>{{ planet.diameter }}</td>
-            <td>{{ planet.gravity }}</td>
-            <td>{{ planet.orbital_period }}</td>
             <td>{{ planet.population }}</td>
-            <td>
-                {% for resident in planet.residents %}
-                {{ resident }},
-                {% endfor %}
-            </td>
-            <td>{{ planet.rotation_period }}</td>
+            <td>{{ planet.residents }}</td>
             <td>{{ planet.surface_water }}</td>
             <td>{{ planet.terrain }}</td>
         </tr>

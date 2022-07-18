@@ -1,12 +1,15 @@
+from operator import attrgetter
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from .models import Planet
 import requests, json
+import locale
 
 # Create your views here.
 def index(request):
     # Curl
+    locale.setlocale(locale.LC_ALL, '')
     try:
         url = 'https://swapi.dev/api/planets/?format=json'
         r = requests.get(url).json()['results']
@@ -58,6 +61,7 @@ def index(request):
                         url=result['url']
                     )
             )
+            planet_list.sort(key=attrgetter('name'))
     
         template = loader.get_template('PlanetDisplay/index.html')
         context = {

@@ -5,4 +5,9 @@ Scripts
 *.pyc
 *.sqlite3
 *.cfg
+truss/PlanetDisplay/migrations/*
+truss/PlanetDisplay/__pycache__/*
+truss/truss/PlanetDisplay/__pycache__/*
+
+C:\Users\joshr\Documents\TrussInterview\truss\PlanetDisplay\__pycache__
 

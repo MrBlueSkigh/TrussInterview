@@ -27,7 +27,9 @@
     <tbody>d
         {% for planet in planets%}
         <tr>
-            <th scope="row">{{ planet.name }}</th>
+            <th scope="row">
+                <a href={{ planet.url }} target="_blank">{{ planet.name }}</a>
+            </th>
             <td>{{ planet.climate }}</td>
             <td>{{ planet.diameter }}</td>
             <td>{{ planet.gravity }}</td>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+{% if planets %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Climate</th>
+            <th scope="col">Diameter</th>
+            <th scope="col">Gravity</th>
+            <th scope="col">Orbital Period</th>
+            <th scope="col">Population</th>
+            <th scope="col">Residents</th>
+            <th scope="col">Rotation Period</th>
+            <th scope="col">Surface Water %</th>
+            <th scope="col">Terrain</th>
+        </tr>
+    </thead>
+    <tbody>d
+        {% for planet in planets%}
+        <tr>
+            <th scope="row">{{ planet.name }}</th>
+            <td>{{ planet.climate }}</td>
+            <td>{{ planet.diameter }}</td>
+            <td>{{ planet.gravity }}</td>
+            <td>{{ planet.orbital_period }}</td>
+            <td>{{ planet.population }}</td>
+            <td>
+                {% for resident in planet.residents %}
+                {{ resident }},
+                {% endfor %}
+            </td>
+            <td>{{ planet.rotation_period }}</td>
+            <td>{{ planet.surface_water }}</td>
+            <td>{{ planet.terrain }}</td>
+        </tr>
+        <tr></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>no planets are available</p>
+{% endif %}
